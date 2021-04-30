@@ -1,0 +1,28 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    dynamic:
+      hikari:
+        connection-timeout: 30000
+        max-lifetime: 1800000
+        max-pool-size: 15
+        min-idle: 5
+        connection-test-query: select 1
+        pool-name: QuartzHikariCP
+      # 配置默认数据源
+      primary: base
+      datasource:
+        # 数据源-1，名称为 base
+        base:
+          url: jdbc:mysql://106.15.94.235:3306/project?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true
+          username: root
+          password: as153759
+          driver-class-name: com.mysql.cj.jdbc.Driver
+        # 数据源-2，名称为 quartz
+        quartz:
+          url: jdbc:mysql://106.15.94.235:3306/quartz?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true
+          username: root
+          password: as153759
+          driver-class-name: com.mysql.cj.jdbc.Driver
